@@ -18,17 +18,17 @@
 
             <div class="mb-3">
               <label for="distancia" class="form-label">Distância percorrida (km):</label>
-              <input type="number" class="form-control" id="distancia" step="0.1" placeholder="Ex: 15">
+              <input type="number" class="form-control" id="distancia" step="0.1" placeholder="">
             </div>
 
             <div class="mb-3">
               <label for="consumo" class="form-label">Consumo médio (km/L):</label>
-              <input type="number" class="form-control" id="consumo" step="0.1" placeholder="Ex: 11.2">
+              <input type="number" class="form-control" id="consumo" step="0.1" placeholder="">
             </div>
 
             <div class="mb-3">
               <label for="preco" class="form-label">Preço da gasolina (R$/L):</label>
-              <input type="number" class="form-control" id="preco" step="0.01" placeholder="Ex: 6.60">
+              <input type="number" class="form-control" id="preco" step="0.01" placeholder="">
             </div>
 
             <button onclick="calcularGasto()" class="btn btn-primary w-100">Calcular</button>
@@ -42,15 +42,15 @@
 
   <script>
     function calcularGasto() {
-      const distancia = parseFloat(document.getElementById('distancia').value);
-      const consumo = parseFloat(document.getElementById('consumo').value);
-      const preco = parseFloat(document.getElementById('preco').value);
+      const distancia = Number(document.getElementById('distancia').value);
+      const consumo = Number(document.getElementById('consumo').value);
+      const preco = Number(document.getElementById('preco').value);
       const resultado = document.getElementById('resultado');
 
       if (distancia > 0 && consumo > 0 && preco > 0) {
         const litros = distancia / consumo;
         const gasto = litros * preco;
-        resultado.innerHTML = Você gastará aproximadamente < strong > R$ ${gasto.toFixed(2)}</strong > de gasolina.;
+        resultado.innerHTML = Você gastará aproximadamente < strong > R$${gasto.toFixed(2)}</strong > de gasolina.;
       } else {
         resultado.innerHTML = <span class="text-danger">Por favor, preencha todos os campos corretamente.</span>;
       }
